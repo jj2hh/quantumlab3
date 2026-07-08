@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+  * { box-sizing: border-box; }
+  a { text-decoration: none; }
+  ::selection { background: {{ accentSoft }}; }
+</style>
+</helmet>
+
+<div style="font-family:'Public Sans',system-ui,sans-serif;background:{{ bg }};color:{{ ink }};min-width:320px;overflow-x:clip;" data-screen-label="Home">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:5px 48px;background:{{ navBg }};border-bottom:1px solid {{ navBg }};">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/q_logo.jpg" alt="Quantum Creations Lab" style="width:53px;height:53px;border-radius:8px;object-fit:cover;flex:none;"/>
+      <span style="font-family:'Lora',serif;font-weight:600;font-size:17px;letter-spacing:0.02em;color:{{ ink }};">Quantum Creations Lab</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:36px;font-size:14px;font-weight:600;letter-spacing:0.02em;">
+      <a href="#about" style="color:{{ ink }};">About</a>
+      <a href="#services" style="color:{{ ink }};">Services</a>
+      <div style="position:relative;" onMouseEnter="{{ openProducts }}" onMouseLeave="{{ closeProducts }}">
+        <a href="#products" style="color:{{ ink }};">Products</a>
+        <sc-if value="{{ productsOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:26px;left:50%;transform:translateX(-50%);background:#000000;border:1px solid {{ hairline }};border-radius:8px;padding:8px;min-width:190px;display:flex;flex-direction:column;gap:2px;box-shadow:0 12px 30px rgba(0,0,0,0.45);">
+            <a href="pages/products-crown.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Crown &amp; Bridge</a>
+            <a href="pages/products-implants.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Implants</a>
+            <a href="pages/products-orthodontics.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Orthodontics</a>
+            <a href="pages/products-dentures.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Dentures</a>
+          </div>
+        </sc-if>
+      </div>
+      <a href="#contact" style="color:{{ ink }};">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative;min-height:640px;display:flex;align-items:center;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,{{ heroStripeA }} 0px,{{ heroStripeA }} 3px,{{ heroStripeB }} 3px,{{ heroStripeB }} 26px);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,{{ bg }} 0%, rgba(14,29,43,0.7) 42%, rgba(14,29,43,0) 68%);"></div>
+    <div style="position:relative;max-width:620px;padding:100px 48px;">
+      <div style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.14em;color:{{ accent }};background:{{ accentSoft }};display:inline-block;padding:5px 12px;border-radius:999px;margin-bottom:22px;">DENTAL LAB PHOTO PLACEHOLDER</div>
+      <h1 style="font-family:'Lora',serif;font-weight:600;font-size:52px;line-height:1.12;margin:0 0 22px;color:{{ ink }};">Innovating Dental Solutions</h1>
+      <p style="font-size:17px;line-height:1.65;color:{{ inkSoft }};margin:0 0 34px;max-width:480px;">Empowering dental practices across Canada with high-precision, custom prosthetics driven by advanced 3D modeling technology.</p>
+      <a href="#about" style="display:inline-block;background:{{ accent }};color:{{ accentDeep }};font-weight:700;font-size:14px;letter-spacing:0.03em;padding:15px 30px;border-radius:999px;">Discover More</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;background:{{ bgAlt }};">
+    <div style="aspect-ratio:4/3;background:repeating-linear-gradient(45deg,{{ tintStripeA }} 0px,{{ tintStripeA }} 2px,{{ tintStripeB }} 2px,{{ tintStripeB }} 18px);display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:ui-monospace,monospace;font-size:12px;letter-spacing:0.05em;color:{{ accent }};background:{{ navBg }};padding:6px 12px;border-radius:5px;">LAB TECHNICIAN AT WORK — photo</span>
+    </div>
+    <div style="padding:64px;">
+      <div style="width:44px;height:3px;background:{{ accent }};margin-bottom:20px;"></div>
+      <h2 style="font-family:'Lora',serif;font-weight:600;font-size:32px;margin:0 0 18px;color:{{ ink }};">Precision Craftsmanship, Reliable Solutions</h2>
+      <p style="font-size:16px;line-height:1.7;color:{{ inkSoft }};margin:0 0 28px;">Quantum Creations Lab delivers high-precision crowns, bridges, and custom dental appliances across Canada. Blending advanced digital CAD/CAM technology with meticulous expertise, we ensure a seamless fit to enhance your workflow and patient satisfaction.</p>
+      <a href="pages/about.dc.html" style="font-weight:600;font-size:14px;color:{{ accent }};border-bottom:1.5px solid {{ accent }};padding-bottom:2px;">Learn more about our lab</a>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" style="padding:80px 48px 88px;">
+    <div style="text-align:center;max-width:640px;margin:0 auto 56px;">
+      <div style="width:44px;height:3px;background:{{ accent }};margin:0 auto 20px;"></div>
+      <h2 style="font-family:'Lora',serif;font-weight:600;font-size:32px;margin:0;color:{{ ink }};">At Your Service</h2>
+    </div>
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:32px;">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <div style="text-align:center;padding:36px 20px;background:{{ bgAlt }};border-radius:12px;border:1px solid {{ hairline }};">
+          <div style="width:52px;height:52px;border-radius:50%;background:{{ accentSoft }};display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+            <div style="width:20px;height:20px;border-radius:5px;border:2px solid {{ accent }};"></div>
+          </div>
+          <h3 style="font-family:'Lora',serif;font-weight:600;font-size:18px;margin:0 0 12px;color:{{ ink }};">{{ s.title }}</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:{{ inkSoft }};margin:0;">{{ s.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div id="products" style="padding:88px 48px;background:{{ bgAlt }};">
+    <div style="text-align:center;max-width:640px;margin:0 auto 56px;">
+      <div style="width:44px;height:3px;background:{{ accent }};margin:0 auto 20px;"></div>
+      <h2 style="font-family:'Lora',serif;font-weight:600;font-size:32px;margin:0;color:{{ ink }};">Our Products</h2>
+    </div>
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+        <a href="{{ p.href }}" style="display:block;position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,{{ p.stripeA }} 0px,{{ p.stripeA }} 2px,{{ p.stripeB }} 2px,{{ p.stripeB }} 18px);"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,18,27,0) 40%,rgba(9,18,27,0.85) 100%);"></div>
+          <div style="position:absolute;left:20px;right:20px;bottom:18px;">
+            <div style="font-family:ui-monospace,monospace;font-size:10px;letter-spacing:0.08em;color:rgba(232,244,248,0.7);margin-bottom:6px;">PRODUCT PHOTO</div>
+            <div style="font-family:'Lora',serif;font-weight:600;font-size:19px;color:#e8f4f8;">{{ p.name }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div style="background:{{ navBg }};padding:56px 48px;text-align:center;">
+    <h2 style="font-family:'Lora',serif;font-weight:600;font-size:26px;margin:0 0 22px;color:{{ ink }};">Ready to partner with our lab?</h2>
+    <a href="#contact" style="display:inline-block;background:{{ accent }};color:{{ accentDeep }};font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;">Get in Touch</a>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" style="padding:88px 48px;">
+    <div style="text-align:center;max-width:640px;margin:0 auto 56px;">
+      <div style="width:44px;height:3px;background:{{ accent }};margin:0 auto 20px;"></div>
+      <h2 style="font-family:'Lora',serif;font-weight:600;font-size:32px;margin:0 0 10px;color:{{ ink }};">Contact Us</h2>
+      <p style="font-size:15px;color:{{ inkSoft }};margin:0;">We'd love to hear from you. Get in touch with us today.</p>
+    </div>
+    <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;">
+      <div style="aspect-ratio:16/11;border-radius:10px;background:repeating-linear-gradient(45deg,{{ tintStripeA }} 0px,{{ tintStripeA }} 2px,{{ tintStripeB }} 2px,{{ tintStripeB }} 18px);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:ui-monospace,monospace;font-size:12px;color:{{ accent }};background:{{ navBg }};padding:6px 12px;border-radius:5px;">MAP EMBED</span>
+      </div>
+      <div>
+        <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:32px;">
+          <sc-for list="{{ contactRows }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="width:36px;height:36px;border-radius:50%;background:{{ accentSoft }};flex:none;display:flex;align-items:center;justify-content:center;">
+                <div style="width:12px;height:12px;border-radius:3px;background:{{ accent }};"></div>
+              </div>
+              <div>
+                <div style="font-weight:700;font-size:14.5px;margin-bottom:3px;color:{{ ink }};">{{ c.label }}</div>
+                <div style="font-size:14.5px;color:{{ inkSoft }};line-height:1.5;">{{ c.value }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <form style="display:flex;flex-direction:column;gap:12px;">
+          <input placeholder="Your Name" style="font-family:inherit;font-size:14px;padding:13px 16px;border-radius:8px;border:1px solid {{ hairline }};background:{{ bgAlt }};color:{{ ink }};"/>
+          <input placeholder="Your Email" style="font-family:inherit;font-size:14px;padding:13px 16px;border-radius:8px;border:1px solid {{ hairline }};background:{{ bgAlt }};color:{{ ink }};"/>
+          <textarea placeholder="Message" rows="3" style="font-family:inherit;font-size:14px;padding:13px 16px;border-radius:8px;border:1px solid {{ hairline }};background:{{ bgAlt }};color:{{ ink }};resize:vertical;"></textarea>
+          <button style="align-self:flex-start;margin-top:6px;background:{{ accent }};color:{{ accentDeep }};font-weight:700;font-size:14px;padding:13px 26px;border:none;border-radius:999px;cursor:pointer;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:{{ navBg }};color:{{ inkSoft }};padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="assets/q_logo.jpg" alt="Quantum Creations Lab" style="width:35px;height:35px;border-radius:6px;object-fit:cover;flex:none;"/>
+      <span style="font-family:'Lora',serif;font-size:14px;color:{{ ink }};">Quantum Creations Lab</span>
+    </div>
+    <span style="font-size:13px;">&copy; 2026 Quantum Creations Lab. All rights reserved.</span>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;accentPalette&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#5fb8d6&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#5fb8d6&quot;,&quot;#7ac9a8&quot;,&quot;#d6a05f&quot;,&quot;#a08fd6&quot;],&quot;section&quot;:&quot;Theme&quot;},&quot;background&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;oklch(18% 0.01 0)&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;oklch(23% 0.04 240)&quot;,&quot;oklch(20% 0.02 260)&quot;,&quot;oklch(18% 0.01 0)&quot;],&quot;section&quot;:&quot;Theme&quot;}}">
+class Component extends DCLogic {
+  state = { productsOpen: false };
+  renderVals() {
+    const accent = this.props.accentPalette ?? '#5fb8d6';
+
+    return {
+      productsOpen: this.state.productsOpen,
+      openProducts: () => this.setState({ productsOpen: true }),
+      closeProducts: () => this.setState({ productsOpen: false }),
+      bg: this.props.background ?? 'oklch(23% 0.04 240)',
+      bgAlt: 'oklch(27% 0.045 240)',
+      navBg: '#000000',
+      ink: 'oklch(95% 0.012 220)',
+      inkSoft: 'oklch(74% 0.03 220)',
+      hairline: 'oklch(36% 0.04 240)',
+      accent: accent,
+      accentDeep: 'oklch(20% 0.03 240)',
+      accentSoft: 'oklch(38% 0.06 220)',
+      heroStripeA: 'oklch(28% 0.05 230)',
+      heroStripeB: 'oklch(20% 0.035 240)',
+      tintStripeA: 'oklch(30% 0.05 225)',
+      tintStripeB: 'oklch(22% 0.035 240)',
+
+      services: [
+        { title: 'Treatment Planning', body: 'Collaborate with our expert technicians to design the ideal restorative blueprint for complex cases.' },
+        { title: 'Custom Shading & Staining', body: 'Advanced hand-crafted staining techniques that perfectly replicate the natural translucency of teeth.' },
+        { title: 'Chair-side Assistance', body: 'Direct clinical support to assist with precise seatings, shade adjustments, and immediate feedback.' },
+        { title: 'Personalized Preferences', body: 'Customized digital guides and restorations tailored strictly to your specific clinical style.' },
+      ],
+
+      products: [
+        { name: 'Crown & Bridge', href: 'pages/products-crown.dc.html', stripeA: 'oklch(30% 0.05 225)', stripeB: 'oklch(22% 0.04 235)' },
+        { name: 'Implants', href: 'pages/products-implants.dc.html', stripeA: 'oklch(28% 0.045 210)', stripeB: 'oklch(20% 0.035 240)' },
+        { name: 'Orthodontics', href: 'pages/products-orthodontics.dc.html', stripeA: 'oklch(30% 0.05 225)', stripeB: 'oklch(22% 0.04 235)' },
+        { name: 'Dentures', href: 'pages/products-dentures.dc.html', stripeA: 'oklch(28% 0.045 210)', stripeB: 'oklch(20% 0.035 240)' },
+      ],
+
+      contactRows: [
+        { label: 'Our Lab Address', value: '123 Dental St, Toronto, ON, M5V 2T6, Canada' },
+        { label: 'Phone', value: '+1 (416) 555-0199' },
+        { label: 'Hours of Operation', value: 'Mon – Fri: 9:00 AM – 6:00 PM' },
+        { label: 'Email', value: 'contact@quantumlab.com' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

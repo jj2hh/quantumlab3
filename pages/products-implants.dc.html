@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProductPage" product-name="Implants" tagline="Implant Solutions" description="Custom implant-supported restorations engineered for long-term stability, precise fit, and predictable clinical outcomes." features="{{ features }}" hint-size="100%,900px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      features: [
+        { title: 'Guided Planning', body: 'Digital treatment planning aligned with your implant system.' },
+        { title: 'Custom Abutments', body: 'Milled abutments for optimal emergence profile and retention.' },
+        { title: 'Full-Arch Solutions', body: 'Support for single-unit through full-arch implant restorations.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

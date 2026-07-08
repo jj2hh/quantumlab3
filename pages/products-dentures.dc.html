@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProductPage" product-name="Dentures" tagline="Removable Prosthetics" description="Full and partial dentures balancing natural aesthetics with comfortable, durable fit for everyday wear." features="{{ features }}" hint-size="100%,900px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      features: [
+        { title: 'Full & Partial Dentures', body: 'Custom removable prosthetics for any clinical case.' },
+        { title: 'Natural Aesthetics', body: 'Shade and shape selection for a lifelike appearance.' },
+        { title: 'Precision Fit', body: 'Digital modeling for comfortable, secure retention.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

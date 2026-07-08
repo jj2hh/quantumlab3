@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+  * { box-sizing: border-box; }
+  a { text-decoration: none; }
+</style>
+</helmet>
+
+<div style="font-family:'Public Sans',system-ui,sans-serif;background:{{ bg }};color:{{ ink }};min-width:320px;overflow-x:clip;" data-screen-label="{{ productName }}">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:#000000;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="../assets/q_logo.jpg" alt="Quantum Creations Lab" style="width:34px;height:34px;border-radius:8px;object-fit:cover;flex:none;"/>
+      <a href="../index.html" style="font-family:'Lora',serif;font-weight:600;font-size:17px;letter-spacing:0.02em;color:{{ ink }};">Quantum Creations Lab</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:36px;font-size:14px;font-weight:600;letter-spacing:0.02em;">
+      <a href="../index.html#about" style="color:{{ ink }};">About</a>
+      <a href="../index.html#services" style="color:{{ ink }};">Services</a>
+      <div style="position:relative;" onMouseEnter="{{ openProducts }}" onMouseLeave="{{ closeProducts }}">
+        <a href="../index.html#products" style="color:{{ ink }};">Products</a>
+        <sc-if value="{{ productsOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:26px;left:50%;transform:translateX(-50%);background:#000000;border:1px solid {{ hairline }};border-radius:8px;padding:8px;min-width:190px;display:flex;flex-direction:column;gap:2px;box-shadow:0 12px 30px rgba(0,0,0,0.45);">
+            <a href="products-crown.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Crown &amp; Bridge</a>
+            <a href="products-implants.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Implants</a>
+            <a href="products-orthodontics.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Orthodontics</a>
+            <a href="products-dentures.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Dentures</a>
+          </div>
+        </sc-if>
+      </div>
+      <a href="../index.html#contact" style="color:{{ ink }};">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative;height:320px;display:flex;align-items:center;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,{{ stripeA }} 0px,{{ stripeA }} 3px,{{ stripeB }} 3px,{{ stripeB }} 26px);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,{{ bg }} 0%, rgba(9,18,27,0.55) 45%, rgba(9,18,27,0) 70%);"></div>
+    <div style="position:relative;padding:0 48px;max-width:640px;">
+      <div style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.14em;color:{{ accent }};background:{{ accentSoft }};display:inline-block;padding:5px 12px;border-radius:999px;margin-bottom:18px;">PRODUCT PHOTO PLACEHOLDER</div>
+      <h1 style="font-family:'Lora',serif;font-weight:600;font-size:42px;margin:0 0 12px;color:{{ ink }};">{{ productName }}</h1>
+      <p style="font-size:16px;color:{{ inkSoft }};margin:0;max-width:480px;">{{ tagline }}</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div style="max-width:900px;margin:0 auto;padding:72px 48px;">
+    <p style="font-size:16px;line-height:1.75;color:{{ inkSoft }};margin:0 0 44px;">{{ description }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+        <div style="padding:28px;background:{{ bgAlt }};border-radius:10px;border:1px solid {{ hairline }};">
+          <div style="width:34px;height:34px;border-radius:8px;background:{{ accentSoft }};display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <div style="width:14px;height:14px;border-radius:3px;border:2px solid {{ accent }};"></div>
+          </div>
+          <h3 style="font-family:'Lora',serif;font-size:16px;font-weight:600;margin:0 0 8px;color:{{ ink }};">{{ f.title }}</h3>
+          <p style="font-size:14px;line-height:1.6;color:{{ inkSoft }};margin:0;">{{ f.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <a href="../index.html#contact" style="display:inline-block;margin-top:48px;background:{{ accent }};color:{{ accentDeep }};font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;">Request a Consultation</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#000000;color:{{ inkSoft }};padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="../assets/q_logo.jpg" alt="Quantum Creations Lab" style="width:26px;height:26px;border-radius:6px;object-fit:cover;flex:none;"/>
+      <span style="font-family:'Lora',serif;font-size:14px;color:{{ ink }};">Quantum Creations Lab</span>
+    </div>
+    <span style="font-size:13px;">&copy; 2026 Quantum Creations Lab. All rights reserved.</span>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;productName&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Crown &amp; Bridge&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;tagline&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;description&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;features&quot;: {&quot;editor&quot;: null, &quot;default&quot;: [], &quot;tsType&quot;: &quot;{title:string,body:string}[]&quot;}}">
+class Component extends DCLogic {
+  state = { productsOpen: false };
+  renderVals() {
+    const accent = '#5fb8d6';
+    return {
+      productsOpen: this.state.productsOpen,
+      openProducts: () => this.setState({ productsOpen: true }),
+      closeProducts: () => this.setState({ productsOpen: false }),
+      bg: 'oklch(23% 0.04 240)',
+      bgAlt: 'oklch(27% 0.045 240)',
+      ink: 'oklch(95% 0.012 220)',
+      inkSoft: 'oklch(74% 0.03 220)',
+      hairline: 'oklch(36% 0.04 240)',
+      accent: accent,
+      accentDeep: 'oklch(20% 0.03 240)',
+      accentSoft: 'oklch(38% 0.06 220)',
+      stripeA: 'oklch(30% 0.05 225)',
+      stripeB: 'oklch(20% 0.035 240)',
+      productName: this.props.productName ?? 'Product',
+      tagline: this.props.tagline ?? '',
+      description: this.props.description ?? '',
+      features: this.props.features ?? [],
+    };
+  }
+}
+</script>
+</body>
+</html>

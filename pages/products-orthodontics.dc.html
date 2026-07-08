@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProductPage" product-name="Orthodontics" tagline="Orthodontic Appliances" description="Custom orthodontic appliances and clear aligner solutions built to precise digital specifications for predictable tooth movement." features="{{ features }}" hint-size="100%,900px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      features: [
+        { title: 'Clear Aligner Fabrication', body: 'Sequenced aligners from digital treatment plans.' },
+        { title: 'Retainers & Appliances', body: 'Custom retainers, expanders, and functional appliances.' },
+        { title: 'Digital Case Tracking', body: 'Full visibility into each case from scan to delivery.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

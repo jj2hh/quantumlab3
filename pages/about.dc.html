@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+  * { box-sizing: border-box; }
+  a { text-decoration: none; }
+</style>
+</helmet>
+
+<div style="font-family:'Public Sans',system-ui,sans-serif;background:{{ bg }};color:{{ ink }};min-width:320px;overflow-x:clip;" data-screen-label="About">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:#000000;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="../assets/q_logo.jpg" alt="Quantum Creations Lab" style="width:34px;height:34px;border-radius:8px;object-fit:cover;flex:none;"/>
+      <a href="../index.html" style="font-family:'Lora',serif;font-weight:600;font-size:17px;letter-spacing:0.02em;color:{{ ink }};">Quantum Creations Lab</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:36px;font-size:14px;font-weight:600;letter-spacing:0.02em;">
+      <a href="../index.html#services" style="color:{{ ink }};">Services</a>
+      <div style="position:relative;" onMouseEnter="{{ openProducts }}" onMouseLeave="{{ closeProducts }}">
+        <a href="../index.html#products" style="color:{{ ink }};">Products</a>
+        <sc-if value="{{ productsOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:26px;left:50%;transform:translateX(-50%);background:#000000;border:1px solid {{ hairline }};border-radius:8px;padding:8px;min-width:190px;display:flex;flex-direction:column;gap:2px;box-shadow:0 12px 30px rgba(0,0,0,0.45);">
+            <a href="products-crown.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Crown &amp; Bridge</a>
+            <a href="products-implants.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Implants</a>
+            <a href="products-orthodontics.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Orthodontics</a>
+            <a href="products-dentures.dc.html" style="padding:9px 12px;border-radius:6px;color:{{ ink }};font-size:13px;font-weight:600;">Dentures</a>
+          </div>
+        </sc-if>
+      </div>
+      <a href="../index.html#contact" style="color:{{ ink }};">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative;height:300px;display:flex;align-items:center;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,{{ stripeA }} 0px,{{ stripeA }} 3px,{{ stripeB }} 3px,{{ stripeB }} 26px);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,{{ bg }} 0%, rgba(9,18,27,0.55) 45%, rgba(9,18,27,0) 70%);"></div>
+    <div style="position:relative;padding:0 48px;">
+      <h1 style="font-family:'Lora',serif;font-weight:600;font-size:40px;margin:0;color:{{ ink }};">About the Lab</h1>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div style="max-width:820px;margin:0 auto;padding:72px 48px;">
+    <p style="font-size:16px;line-height:1.8;color:{{ inkSoft }};margin:0 0 24px;">Quantum Creations Lab delivers high-precision crowns, bridges, implants, and custom dental appliances to practices across Canada. Our technicians combine advanced digital CAD/CAM technology with meticulous hand-finishing to ensure every restoration fits seamlessly.</p>
+    <p style="font-size:16px;line-height:1.8;color:{{ inkSoft }};margin:0 0 44px;">From treatment planning through chair-side support, we work as an extension of your clinical team — tailoring every case to your preferences and your patients' needs.</p>
+    <div style="aspect-ratio:16/7;border-radius:10px;background:repeating-linear-gradient(45deg,{{ stripeA }} 0px,{{ stripeA }} 2px,{{ stripeB }} 2px,{{ stripeB }} 18px);display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:ui-monospace,monospace;font-size:12px;color:{{ accent }};background:#000000;padding:6px 12px;border-radius:5px;">LAB INTERIOR — photo</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#000000;color:{{ inkSoft }};padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="../assets/q_logo.jpg" alt="Quantum Creations Lab" style="width:26px;height:26px;border-radius:6px;object-fit:cover;flex:none;"/>
+      <span style="font-family:'Lora',serif;font-size:14px;color:{{ ink }};">Quantum Creations Lab</span>
+    </div>
+    <span style="font-size:13px;">&copy; 2026 Quantum Creations Lab. All rights reserved.</span>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { productsOpen: false };
+  renderVals() {
+    return {
+      productsOpen: this.state.productsOpen,
+      openProducts: () => this.setState({ productsOpen: true }),
+      closeProducts: () => this.setState({ productsOpen: false }),
+      bg: 'oklch(23% 0.04 240)',
+      ink: 'oklch(95% 0.012 220)',
+      inkSoft: 'oklch(74% 0.03 220)',
+      accent: '#5fb8d6',
+      stripeA: 'oklch(30% 0.05 225)',
+      stripeB: 'oklch(20% 0.035 240)',
+    };
+  }
+}
+</script>
+</body>
+</html>
